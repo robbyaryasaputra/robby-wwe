@@ -56,4 +56,45 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/tvUserDisplay" />
 
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      android:paddingHorizontal="32dp"
+      android:layout_marginTop="32dp"
+      app:layout_constraintTop_toBottomOf="@id/tvSubText"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent">
+
+      <Button
+          android:id="@+id/btnRumus"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="Rumus Bangun Ruang"
+          android:layout_marginBottom="16dp" />
+
+      <Button
+          android:id="@+id/btnCustom1"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="Halaman Custom 1"
+          android:layout_marginBottom="16dp" />
+
+      <Button
+          android:id="@+id/btnCustom2"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="Halaman Custom 2"
+          android:layout_marginBottom="16dp" />
+
+      <Button
+          android:id="@+id/btnLogout"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:backgroundTint="#D32F2F"
+          android:textColor="#FFFFFF"
+          android:text="Logout" />
+  </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

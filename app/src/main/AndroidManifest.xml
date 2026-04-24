@@ -11,16 +11,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Rbywwe">
-
+        <activity
+            android:name=".pertemuan_4.DashboardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".pertemuan_4.halaman3Activity"
+            android:exported="false" />
+        <activity
+            android:name=".pertemuan_4.halaman2Activity"
+            android:exported="false" />
         <activity
             android:name=".pertemuan_3.LoginActivity"
-            android:exported="true"> <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-
         <activity
             android:name=".pertemuan_3.WelcomeActivity"
             android:exported="false" />
@@ -30,8 +38,6 @@
         <activity
             android:name=".MainActivity"
             android:exported="false" />
-
-
     </application>
 
 </manifest>

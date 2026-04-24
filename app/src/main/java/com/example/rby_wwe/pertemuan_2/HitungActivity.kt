@@ -2,82 +2,71 @@ package com.example.rby_wwe.pertemuan_2
 
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.rby_wwe.R
+import com.example.rby_wwe.databinding.ActivityHitungBinding
 
 class HitungActivity : AppCompatActivity() {
+
+    // 1. Inisialisasi View Binding
+    private lateinit var binding: ActivityHitungBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // 1. Kembalikan fitur ini agar area jam & baterai terlihat menyatu (modern)
+        // 2. Setup Binding
+        binding = ActivityHitungBinding.inflate(layoutInflater)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_hitung)
+        setContentView(binding.root)
 
-        // 2. Atur ulang padding: Gabungkan jarak sistem (jam) + jarak desain kita (24dp)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-
-            // Konversi 24dp (dari XML) menjadi ukuran Pixel (px) agar bisa dibaca oleh Kotlin
             val paddingTambahan = (24 * resources.displayMetrics.density).toInt()
-
             v.setPadding(
-                systemBars.left + paddingTambahan,   // Jarak kiri
-                systemBars.top + paddingTambahan,    // Jarak atas (jam/baterai)
-                systemBars.right + paddingTambahan,  // Jarak kanan
-                systemBars.bottom + paddingTambahan  // Jarak bawah (navigasi)
+                systemBars.left + paddingTambahan,
+                systemBars.top + paddingTambahan,
+                systemBars.right + paddingTambahan,
+                systemBars.bottom + paddingTambahan
             )
             insets
         }
 
-        // 3. KENALKAN KOMPONEN XML KE KOTLIN
-        val inputAlas = findViewById<EditText>(R.id.inputAlas)
-        val inputTinggi = findViewById<EditText>(R.id.inputTinggi)
-        val btnSegitiga = findViewById<Button>(R.id.btnSegitiga)
-
-        val inputSisi = findViewById<EditText>(R.id.inputSisi)
-        val btnKubus = findViewById<Button>(R.id.btnKubus)
-
-        val teksHasil = findViewById<TextView>(R.id.teksHasil)
-
-        // 4. KETIKA TOMBOL SEGITIGA DIKLIK
-        btnSegitiga.setOnClickListener {
-            val alasTeks = inputAlas.text.toString()
-            val tinggiTeks = inputTinggi.text.toString()
+        // 3. Logika Hitung Segitiga (Menggunakan Binding)
+        binding.btnSegitiga.setOnClickListener {
+            val alasTeks = binding.inputAlas.text.toString()
+            val tinggiTeks = binding.inputTinggi.text.toString()
 
             if (alasTeks.isNotEmpty() && tinggiTeks.isNotEmpty()) {
                 val alas = alasTeks.toDouble()
                 val tinggi = tinggiTeks.toDouble()
-
                 val luas = 0.5 * alas * tinggi
-                teksHasil.text = "Luas Segitiga: $luas"
-
+                binding.teksHasil.text = "Luas Segitiga: $luas"
                 Log.d("Praktikum", "Berhasil hitung segitiga: $luas")
             } else {
                 Toast.makeText(this, "Alas dan Tinggi harus diisi!", Toast.LENGTH_SHORT).show()
             }
         }
 
-        // 5. KETIKA TOMBOL KUBUS DIKLIK
-        btnKubus.setOnClickListener {
-            val sisiTeks = inputSisi.text.toString()
+        // 4. Logika Hitung Kubus (Menggunakan Binding)
+        binding.btnKubus.setOnClickListener {
+            val sisiTeks = binding.inputSisi.text.toString()
 
             if (sisiTeks.isNotEmpty()) {
                 val sisi = sisiTeks.toDouble()
-
                 val volume = sisi * sisi * sisi
-                teksHasil.text = "Volume Kubus: $volume"
-
+                binding.teksHasil.text = "Volume Kubus: $volume"
                 Log.d("Praktikum", "Berhasil hitung kubus: $volume")
             } else {
                 Toast.makeText(this, "Sisi harus diisi!", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        // 5. Logika Tombol Kembali
+        binding.btnBack.setOnClickListener {
+            finish() // Menutup halaman hitung dan kembali ke Dashboard/Welcome screen
         }
     }
 }

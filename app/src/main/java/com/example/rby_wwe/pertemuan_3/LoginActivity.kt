@@ -12,6 +12,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.rby_wwe.R // Pastikan import R benar
 import com.example.rby_wwe.databinding.ActivityLoginBinding
+import com.example.rby_wwe.pertemuan_4.DashboardActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -31,14 +32,14 @@ class LoginActivity : AppCompatActivity() {
             insets
         }
 
-        // Logika Klik Tombol Login
+        // Logika Klik Tombol Loginn
         binding.btnLogin.setOnClickListener {
             val email = binding.etUsername.text.toString() // ID tetap etUsername, tapi teksnya "E-mail"
             val password = binding.etPassword.text.toString()
 
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 // Berpindah ke WelcomeActivity
-                val intent = Intent(this, WelcomeActivity::class.java)
+                val intent = Intent(this, DashboardActivity::class.java)
                 intent.putExtra("USER_NAME", email) // Kirim data email (username) ke hal berikutnya
                 startActivity(intent)
             } else {

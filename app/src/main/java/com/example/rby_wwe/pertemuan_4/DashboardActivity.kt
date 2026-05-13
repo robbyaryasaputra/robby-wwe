@@ -1,15 +1,18 @@
 package com.example.rby_wwe.pertemuan_4
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.edit
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.rby_wwe.AuthActivity
 import com.example.rby_wwe.databinding.ActivityDashboardBinding
 import com.example.rby_wwe.pertemuan_2.HitungActivity
-import com.example.rby_wwe.pertemuan_3.LoginActivity
+import com.example.rby_wwe.pertemuan_6.webActivity
 import com.google.android.material.snackbar.Snackbar
 
 class DashboardActivity : AppCompatActivity() {
@@ -23,6 +26,11 @@ class DashboardActivity : AppCompatActivity() {
         binding = ActivityDashboardBinding.inflate(layoutInflater)
         enableEdgeToEdge()
         setContentView(binding.root)
+
+        // Menerima data nama user dari intent atau SharedPreferences
+        val sharedPref = getSharedPreferences("user_pref", Context.MODE_PRIVATE)
+        val userName = intent.getStringExtra("USER_NAME") ?: sharedPref.getString("username", "Robby")
+        binding.tvWelcome.text = "Halo, $userName"
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -52,7 +60,13 @@ class DashboardActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // 4. Tombol Logout dengan AlertDialog & SnackBar
+        // 4. Tombol Web Bina Desa
+        binding.btnWeb.setOnClickListener {
+            val intent = Intent(this, webActivity::class.java)
+            startActivity(intent)
+        }
+
+        // 5. Tombol Logout dengan AlertDialog & SnackBar
         binding.btnLogout.setOnClickListener {
             tampilkanDialogLogout()
         }
@@ -65,7 +79,13 @@ class DashboardActivity : AppCompatActivity() {
 
         // Jika pilih Ya
         builder.setPositiveButton("Ya") { dialog, which ->
-            val intent = Intent(this, LoginActivity::class.java)
+            // Hapus session di SharedPreferences
+            val sharedPref = getSharedPreferences("user_pref", Context.MODE_PRIVATE)
+            sharedPref.edit {
+                clear()
+            }
+
+            val intent = Intent(this, AuthActivity::class.java)
             // Membersihkan backstack agar user tidak bisa tekan tombol 'back' untuk kembali ke dashboard
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)

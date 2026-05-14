@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.rby_wwe.databinding.ActivityLoginBinding
-import com.example.rby_wwe.pertemuan_4.DashboardActivity
 
 class AuthActivity : AppCompatActivity() {
 
@@ -33,8 +32,8 @@ class AuthActivity : AppCompatActivity() {
         // 1. Kondisi jika isLogin bernilai true
         val isLogin = sharedPref.getBoolean("isLogin", false)
         if (isLogin) {
-            // Panggil Intent untuk ke DashboardActivity
-            val intent = Intent(this, DashboardActivity::class.java)
+            // Panggil Intent untuk ke MainActivity (Dashboard Utama)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
         }
@@ -51,8 +50,8 @@ class AuthActivity : AppCompatActivity() {
                 editor.putString("username", username)
                 editor.apply()
 
-                // Berpindah ke DashboardActivity
-                val intent = Intent(this, DashboardActivity::class.java)
+                // Berpindah ke MainActivity
+                val intent = Intent(this, MainActivity::class.java)
                 intent.putExtra("USER_NAME", username)
                 startActivity(intent)
                 finish()

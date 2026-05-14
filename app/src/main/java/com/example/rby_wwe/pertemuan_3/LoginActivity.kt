@@ -1,18 +1,14 @@
 package com.example.rby_wwe.pertemuan_3
 
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
-import android.text.Html
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.rby_wwe.R // Pastikan import R benar
+import com.example.rby_wwe.MainActivity
 import com.example.rby_wwe.databinding.ActivityLoginBinding
-import com.example.rby_wwe.pertemuan_4.DashboardActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -32,16 +28,17 @@ class LoginActivity : AppCompatActivity() {
             insets
         }
 
-        // Logika Klik Tombol Loginn
+        // Logika Klik Tombol Login
         binding.btnLogin.setOnClickListener {
-            val email = binding.etUsername.text.toString() // ID tetap etUsername, tapi teksnya "E-mail"
+            val email = binding.etUsername.text.toString()
             val password = binding.etPassword.text.toString()
 
             if (email.isNotEmpty() && password.isNotEmpty()) {
-                // Berpindah ke WelcomeActivity
-                val intent = Intent(this, DashboardActivity::class.java)
-                intent.putExtra("USER_NAME", email) // Kirim data email (username) ke hal berikutnya
+                // Berpindah ke MainActivity (Dashboard Utama)
+                val intent = Intent(this, MainActivity::class.java)
+                intent.putExtra("USER_NAME", email)
                 startActivity(intent)
+                finish() // Menutup LoginActivity agar tidak bisa kembali dengan tombol back
             } else {
                 Toast.makeText(this, "Tolong isi E-mail dan Password", Toast.LENGTH_SHORT).show()
             }

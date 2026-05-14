@@ -4,8 +4,10 @@ import android.annotation.SuppressLint
 import android.net.http.SslError
 import android.os.Bundle
 import android.webkit.*
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.rby_wwe.R
@@ -26,9 +28,29 @@ class webActivity : AppCompatActivity() {
             insets
         }
 
+        // --- SETUP TOOLBAR & TOMBOL BACK ---
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        
+        // Klik tombol navigasi (back arrow)
+        toolbar.setNavigationOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
+
+        // Menangani tombol back fisik perangkat
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (webView.canGoBack()) {
+                    webView.goBack()
+                } else {
+                    finish()
+                }
+            }
+        })
+
         webView = findViewById(R.id.webView)
 
-        // --- KONFIGURASI WEBVIEW SUPER PERMISSIVE ---
+        // --- KONFIGURASI WEBVIEW ---
         webView.settings.apply {
             javaScriptEnabled = true
             domStorageEnabled = true
@@ -37,50 +59,25 @@ class webActivity : AppCompatActivity() {
             databaseEnabled = true
             loadWithOverviewMode = true
             useWideViewPort = true
-
-            // PAKSA AKSES JARINGAN
-            blockNetworkLoads = false
-            blockNetworkImage = false
             mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
-
-            // CACHE & WINDOWS
             cacheMode = WebSettings.LOAD_NO_CACHE
-            setSupportMultipleWindows(true)
-            javaScriptCanOpenWindowsAutomatically = true
-
-            // User agent Chrome Desktop agar tidak diblokir server
             userAgentString = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"
         }
 
         webView.webViewClient = object : WebViewClient() {
             override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
-                // Return false agar WebView yang menangani navigasi (mencegah error akses)
                 return false
             }
 
             override fun onReceivedSslError(view: WebView?, handler: SslErrorHandler?, error: SslError?) {
-                // Sangat penting untuk AlwaysData
-                handler?.proceed()
-            }
-
-            override fun onReceivedError(view: WebView?, request: WebResourceRequest?, error: WebResourceError?) {
-                super.onReceivedError(view, request, error)
+                handler?.proceed() // Penting untuk bypass SSL error jika diperlukan
             }
         }
 
         webView.webChromeClient = WebChromeClient()
 
-        // Link target
+        // Load URL
         val urlDesa = "https://robby.alwaysdata.net/"
         webView.loadUrl(urlDesa)
-    }
-
-    @Deprecated("Deprecated in Java")
-    override fun onBackPressed() {
-        if (webView.canGoBack()) {
-            webView.goBack()
-        } else {
-            super.onBackPressed()
-        }
     }
 }

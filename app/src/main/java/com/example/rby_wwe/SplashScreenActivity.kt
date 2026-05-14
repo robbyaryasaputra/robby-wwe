@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
-import com.example.rby_wwe.pertemuan_4.DashboardActivity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -33,7 +32,7 @@ class SplashScreenActivity : AppCompatActivity() {
             delay(2000) // Delay splash screen 2 detik
 
             if (isLogin) {
-                val intent = Intent(this@SplashScreenActivity, DashboardActivity::class.java)
+                val intent = Intent(this@SplashScreenActivity, MainActivity::class.java)
                 intent.putExtra("USER_NAME", userName)
                 startActivity(intent)
             } else {

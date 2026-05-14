@@ -23,7 +23,6 @@ class SplashScreenActivity : AppCompatActivity() {
             insets
         }
 
-        // Konsisten menggunakan "user_pref" sesuai permintaan sebelumnya
         val sharedPref = getSharedPreferences("user_pref", Context.MODE_PRIVATE)
         val isLogin = sharedPref.getBoolean("isLogin", false)
         val userName = sharedPref.getString("username", "")
@@ -32,7 +31,7 @@ class SplashScreenActivity : AppCompatActivity() {
             delay(2000) // Delay splash screen 2 detik
 
             if (isLogin) {
-                val intent = Intent(this@SplashScreenActivity, MainActivity::class.java)
+                val intent = Intent(this@SplashScreenActivity, BaseActivity::class.java)
                 intent.putExtra("USER_NAME", userName)
                 startActivity(intent)
             } else {

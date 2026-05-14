@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
     <!-- Pastikan izin diletakkan di sini, di luar tag application -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -16,38 +15,41 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Rbywwe"
         android:usesCleartextTraffic="true">
-
         <activity
-            android:name=".pertemuan_6.webActivity"
+            android:name=".BaseActivity"
             android:exported="false" />
         <activity
-            android:name=".pertemuan_3.LoginActivity"
+            android:name=".Home.pertemuan_6.webActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Home.pertemuan_3.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".AuthActivity"
             android:exported="false" />
         <activity
-            android:name=".pertemuan_4.DashboardActivity"
+            android:name=".Home.pertemuan_4.DashboardActivity"
             android:exported="false" />
         <activity
-            android:name=".pertemuan_4.halaman3Activity"
+            android:name=".Home.pertemuan_4.halaman3Activity"
             android:exported="false" />
         <activity
-            android:name=".pertemuan_4.halaman2Activity"
+            android:name=".Home.pertemuan_4.halaman2Activity"
             android:exported="false" />
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".pertemuan_3.WelcomeActivity"
+            android:name=".Home.pertemuan_3.WelcomeActivity"
             android:exported="false" />
         <activity
-            android:name=".pertemuan_2.HitungActivity"
+            android:name=".Home.pertemuan_2.HitungActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

@@ -1,6 +1,5 @@
-package com.example.rby_wwe.pertemuan_4
+package com.example.rby_wwe.Home.pertemuan_4
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -11,8 +10,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.rby_wwe.AuthActivity
 import com.example.rby_wwe.databinding.ActivityDashboardBinding
-import com.example.rby_wwe.pertemuan_2.HitungActivity
-import com.example.rby_wwe.pertemuan_6.webActivity
+import com.example.rby_wwe.Home.pertemuan_2.HitungActivity
+import com.example.rby_wwe.Home.pertemuan_6.webActivity
 import com.google.android.material.snackbar.Snackbar
 
 class DashboardActivity : AppCompatActivity() {
@@ -28,7 +27,7 @@ class DashboardActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // Menerima data nama user dari intent atau SharedPreferences
-        val sharedPref = getSharedPreferences("user_pref", Context.MODE_PRIVATE)
+        val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
         val userName = intent.getStringExtra("USER_NAME") ?: sharedPref.getString("username", "Robby")
         binding.tvWelcome.text = "Halo, $userName"
 
@@ -80,7 +79,7 @@ class DashboardActivity : AppCompatActivity() {
         // Jika pilih Ya
         builder.setPositiveButton("Ya") { dialog, which ->
             // Hapus session di SharedPreferences
-            val sharedPref = getSharedPreferences("user_pref", Context.MODE_PRIVATE)
+            val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
             sharedPref.edit {
                 clear()
             }

@@ -1,4 +1,4 @@
-package com.example.rby_wwe.pertemuan_2
+package com.example.rby_wwe.Home.pertemuan_2
 
 import android.os.Bundle
 import android.util.Log

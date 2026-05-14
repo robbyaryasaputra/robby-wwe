@@ -1,22 +1,22 @@
-package com.example.rby_wwe.pertemuan_4
+package com.example.rby_wwe.Home.pertemuan_4
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.rby_wwe.databinding.ActivityHalaman2Binding
+import com.example.rby_wwe.databinding.ActivityHalaman3Binding
 
-class halaman2Activity : AppCompatActivity() {
+class halaman3Activity : AppCompatActivity() {
 
     // 1. Deklarasi binding
-    private lateinit var binding: ActivityHalaman2Binding
+    private lateinit var binding: ActivityHalaman3Binding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         // 2. Inisialisasi binding
-        binding = ActivityHalaman2Binding.inflate(layoutInflater)
+        binding = ActivityHalaman3Binding.inflate(layoutInflater)
         enableEdgeToEdge()
         setContentView(binding.root)
 
@@ -31,7 +31,7 @@ class halaman2Activity : AppCompatActivity() {
         val desc = intent.getStringExtra("DESC")
 
         // 4. Menampilkan data menggunakan binding
-        binding.tvTitle.text = title ?: "Halaman 2"
+        binding.tvTitle.text = title ?: "Halaman 3"
         binding.tvDesc.text = desc ?: "Deskripsi tidak tersedia."
 
         // 5. Fungsi tombol kembali

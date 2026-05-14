@@ -26,32 +26,26 @@ class AuthActivity : AppCompatActivity() {
             insets
         }
 
-        // 1. Definisikan SharedPreferences (sesuai gambar: user_pref)
         val sharedPref = getSharedPreferences("user_pref", Context.MODE_PRIVATE)
 
-        // 1. Kondisi jika isLogin bernilai true
         val isLogin = sharedPref.getBoolean("isLogin", false)
         if (isLogin) {
-            // Panggil Intent untuk ke MainActivity (Dashboard Utama)
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, BaseActivity::class.java)
             startActivity(intent)
             finish()
         }
 
-        // Logika Klik Tombol Login
         binding.btnLogin.setOnClickListener {
             val username = binding.etUsername.text.toString()
             val password = binding.etPassword.text.toString()
 
             if (username.isNotEmpty() && password.isNotEmpty()) {
-                // 2. Set isLogin menjadi true dan simpan username jika berhasil
                 val editor = sharedPref.edit()
                 editor.putBoolean("isLogin", true)
                 editor.putString("username", username)
                 editor.apply()
 
-                // Berpindah ke MainActivity
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, BaseActivity::class.java)
                 intent.putExtra("USER_NAME", username)
                 startActivity(intent)
                 finish()
@@ -60,7 +54,6 @@ class AuthActivity : AppCompatActivity() {
             }
         }
 
-        // Logika Klik Daftar
         binding.tvRegister.setOnClickListener {
             Toast.makeText(this, "Fitur Daftar belum tersedia", Toast.LENGTH_SHORT).show()
         }

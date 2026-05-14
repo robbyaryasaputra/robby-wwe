@@ -1,11 +1,17 @@
-package com.example.rby_wwe.pertemuan_3
+package com.example.rby_wwe.Home.pertemuan_3
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.rby_wwe.Home.pertemuan_2.HitungActivity
+import com.example.rby_wwe.Home.pertemuan_4.halaman2Activity
+import com.example.rby_wwe.Home.pertemuan_4.halaman3Activity
 import com.example.rby_wwe.databinding.ActivityWelcomeBinding // Import Binding
+import com.google.android.material.snackbar.Snackbar
 
 class WelcomeActivity : AppCompatActivity() {
 
@@ -32,38 +38,38 @@ class WelcomeActivity : AppCompatActivity() {
         val desc = "Ini adalah deskripsi dari halaman utama yang dibawa ke halaman lain."
 
         binding.btnRumus.setOnClickListener {
-            val intent = android.content.Intent(this, com.example.rby_wwe.pertemuan_2.HitungActivity::class.java)
+            val intent = Intent(this, HitungActivity::class.java)
             intent.putExtra("TITLE", title)
             intent.putExtra("DESC", desc)
             startActivity(intent)
         }
 
         binding.btnCustom1.setOnClickListener {
-            val intent = android.content.Intent(this, com.example.rby_wwe.pertemuan_4.halaman2Activity::class.java)
+            val intent = Intent(this, halaman2Activity::class.java)
             intent.putExtra("TITLE", title)
             intent.putExtra("DESC", desc)
             startActivity(intent)
         }
 
         binding.btnCustom2.setOnClickListener {
-            val intent = android.content.Intent(this, com.example.rby_wwe.pertemuan_4.halaman3Activity::class.java)
+            val intent = Intent(this, halaman3Activity::class.java)
             intent.putExtra("TITLE", title)
             intent.putExtra("DESC", desc)
             startActivity(intent)
         }
 
         binding.btnLogout.setOnClickListener {
-            androidx.appcompat.app.AlertDialog.Builder(this)
+            AlertDialog.Builder(this)
                 .setTitle("Konfirmasi Logout")
                 .setMessage("Apakah Anda yakin ingin logout?")
                 .setPositiveButton("Ya") { _, _ ->
-                    val intent = android.content.Intent(this, LoginActivity::class.java)
-                    intent.flags = android.content.Intent.FLAG_ACTIVITY_NEW_TASK or android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    val intent = Intent(this, LoginActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
                 }
                 .setNegativeButton("Tidak") { dialog, _ ->
                     dialog.dismiss()
-                    com.google.android.material.snackbar.Snackbar.make(binding.root, "Logout dibatalkan", com.google.android.material.snackbar.Snackbar.LENGTH_SHORT).show()
+                    Snackbar.make(binding.root, "Logout dibatalkan", Snackbar.LENGTH_SHORT).show()
                 }
                 .show()
         }

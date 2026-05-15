@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FAF9F9">
@@ -54,7 +55,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="24dp"
                 android:fontFamily="sans-serif-black"
-                android:text="Selamat Datang"
+                android:text="PORTAL PUBLIK"
                 android:textColor="#1A1C1E"
                 android:textSize="28sp" />
 
@@ -77,6 +78,7 @@
                 app:startIconDrawable="@drawable/ic_person">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etUsername"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName" />
@@ -91,6 +93,7 @@
                 app:startIconDrawable="@drawable/ic_lock">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword" />
@@ -142,7 +145,6 @@
                 android:textColor="#999999"
                 android:textSize="12sp" />
 
-            <!-- Social Login -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -159,6 +161,7 @@
                     android:textAllCaps="false"
                     app:cornerRadius="12dp"
                     app:icon="@drawable/ic_google"
+                    app:iconTint="@null"
                     app:strokeColor="#DDDDDD" />
 
                 <com.google.android.material.button.MaterialButton
@@ -171,6 +174,7 @@
                     android:textAllCaps="false"
                     app:cornerRadius="12dp"
                     app:icon="@drawable/ic_facebook"
+                    app:iconTint="@null"
                     app:strokeColor="#DDDDDD" />
             </LinearLayout>
 
@@ -179,6 +183,7 @@
 
     <!-- Footer -->
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
@@ -190,20 +195,28 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/tvRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="96dp"
         android:text="Daftar sekarang"
         android:textColor="#E91E63"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="221dp"
-        tools:layout_editor_absoluteY="696dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView" />
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="8dp"
         android:text="Belum punya akun? "
         android:textColor="#666666"
-        tools:layout_editor_absoluteX="89dp"
-        tools:layout_editor_absoluteY="696dp" />
+        app:layout_constraintEnd_toStartOf="@+id/tvRegister"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginCard" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

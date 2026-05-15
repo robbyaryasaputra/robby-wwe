@@ -8,15 +8,17 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.rby_wwe.Home.pertemuan_3.RegisterActivity
+import com.example.rby_wwe.databinding.ActivityAuthBinding
 import com.example.rby_wwe.databinding.ActivityLoginBinding
 
 class AuthActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityLoginBinding
+    private lateinit var binding: ActivityAuthBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityLoginBinding.inflate(layoutInflater)
+        binding = ActivityAuthBinding.inflate(layoutInflater)
         enableEdgeToEdge()
         setContentView(binding.root)
 
@@ -28,6 +30,7 @@ class AuthActivity : AppCompatActivity() {
 
         val sharedPref = getSharedPreferences("user_pref", Context.MODE_PRIVATE)
 
+        // Cek Auto Login
         val isLogin = sharedPref.getBoolean("isLogin", false)
         if (isLogin) {
             val intent = Intent(this, BaseActivity::class.java)
@@ -35,27 +38,43 @@ class AuthActivity : AppCompatActivity() {
             finish()
         }
 
-        binding.btnLogin.setOnClickListener {
+        // Logika Login
+        binding.loginButton.setOnClickListener {
             val username = binding.etUsername.text.toString()
             val password = binding.etPassword.text.toString()
 
             if (username.isNotEmpty() && password.isNotEmpty()) {
-                val editor = sharedPref.edit()
-                editor.putBoolean("isLogin", true)
-                editor.putString("username", username)
-                editor.apply()
+                // Ambil data hasil registrasi
+                val registeredUser = sharedPref.getString("reg_username", "")
+                val registeredPass = sharedPref.getString("reg_password", "")
 
-                val intent = Intent(this, BaseActivity::class.java)
-                intent.putExtra("USER_NAME", username)
-                startActivity(intent)
-                finish()
+                // Rule Login Quiz:
+                // 1. username == password
+                // 2. data cocok dengan SharedPreferences (Hasil Registrasi)
+                if (username == password || (username == registeredUser && password == registeredPass)) {
+                    val editor = sharedPref.edit()
+                    editor.putBoolean("isLogin", true)
+                    editor.putString("username", username)
+                    editor.apply()
+
+                    val intent = Intent(this, BaseActivity::class.java)
+                    intent.putExtra("USER_NAME", username)
+                    startActivity(intent)
+                    finish()
+                } else {
+                    Toast.makeText(this, "Username atau Password salah", Toast.LENGTH_SHORT).show()
+                }
             } else {
                 Toast.makeText(this, "Tolong isi Username dan Password", Toast.LENGTH_SHORT).show()
             }
         }
 
+        // PERBAIKAN: Navigasi ke Halaman Registrasi
         binding.tvRegister.setOnClickListener {
-            Toast.makeText(this, "Fitur Daftar belum tersedia", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
         }
     }
 }
+
+

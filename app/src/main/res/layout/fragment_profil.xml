@@ -32,6 +32,7 @@
             app:strokeWidth="4dp" />
 
         <TextView
+            android:id="@+id/tvProfileName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -48,10 +49,58 @@
             android:textStyle="bold"
             android:textSize="16sp" />
 
+        <!-- Stats Grid with Background Drawable -->
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:columnCount="3"
+            android:alignmentMode="alignMargins">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="4dp"
+                android:padding="12dp"
+                android:background="@drawable/bg_card_white_gradient"
+                android:gravity="center"
+                android:orientation="vertical">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="12" android:textStyle="bold" android:textSize="18sp" android:textColor="#D81B60" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Kegiatan" android:textSize="10sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="4dp"
+                android:padding="12dp"
+                android:background="@drawable/bg_card_white_gradient"
+                android:gravity="center"
+                android:orientation="vertical">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="850" android:textStyle="bold" android:textSize="18sp" android:textColor="#D81B60" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Poin" android:textSize="10sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="4dp"
+                android:padding="12dp"
+                android:background="@drawable/bg_card_white_gradient"
+                android:gravity="center"
+                android:orientation="vertical">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="5" android:textStyle="bold" android:textSize="18sp" android:textColor="#D81B60" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Lencana" android:textSize="10sp" />
+            </LinearLayout>
+        </GridLayout>
+
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="24dp"
             app:cardCornerRadius="16dp"
             app:strokeWidth="0dp">
 
@@ -59,7 +108,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="20dp">
+                android:padding="20dp"
+                android:background="@drawable/bg_card_red_border">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -94,6 +144,31 @@
                 </LinearLayout>
 
             </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="4dp"
+            android:fontFamily="sans-serif-black"
+            android:text="Lainnya"
+            android:textSize="18sp" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:cardCornerRadius="16dp"
+            app:strokeWidth="0dp">
+
+            <ListView
+                android:id="@+id/lvSettings"
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
+                android:divider="#EEEEEE"
+                android:dividerHeight="1dp" />
         </com.google.android.material.card.MaterialCardView>
 
         <TextView

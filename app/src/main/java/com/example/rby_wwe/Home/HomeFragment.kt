@@ -16,6 +16,7 @@ import com.example.rby_wwe.Home.pertemuan_4.halaman3Activity
 import com.example.rby_wwe.Home.pertemuan_6.webActivity
 import com.example.rby_wwe.databinding.FragmentHomeBinding
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.chip.Chip
 
 class HomeFragment : Fragment() {
 
@@ -33,71 +34,64 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Menerima data nama user dari intent atau SharedPreferences
         val sharedPref = requireActivity().getSharedPreferences("user_pref", Context.MODE_PRIVATE)
         val userName = requireActivity().intent.getStringExtra("USER_NAME") ?: sharedPref.getString("username", "Robby")
         binding.tvWelcome.text = "Halo, $userName"
 
-        // --- Logika Tombol Dashboard ---
+        // Logika ChipGroup
+        binding.chipGroup.setOnCheckedStateChangeListener { group, checkedIds ->
+            if (checkedIds.isNotEmpty()) {
+                val chip = group.findViewById<Chip>(checkedIds[0])
+                Snackbar.make(binding.root, "Kategori: ${chip.text}", Snackbar.LENGTH_SHORT).show()
+            }
+        }
 
-        // 1. Tombol Buka HitungActivity
         binding.btnHitung.setOnClickListener {
-            val intent = Intent(requireContext(), HitungActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(requireContext(), HitungActivity::class.java))
         }
 
-        // 2. Tombol Buka Halaman 2
         binding.btnHalaman2.setOnClickListener {
-            val intent = Intent(requireContext(), halaman2Activity::class.java)
-            intent.putExtra("TITLE", "Halaman 2")
-            intent.putExtra("DESC", "Menyajikan harmoni visual yang memukau. Halaman ini memadukan latar belakang imersif dengan translucent card, menciptakan pengalaman membaca yang estetis dan nyaman.")
+            val intent = Intent(requireContext(), halaman2Activity::class.java).apply {
+                putExtra("TITLE", "Halaman 2")
+                putExtra("DESC", "Menyajikan harmoni visual Bina Desa.")
+            }
             startActivity(intent)
         }
 
-        // 3. Tombol Buka Halaman 3
         binding.btnHalaman3.setOnClickListener {
-            val intent = Intent(requireContext(), halaman3Activity::class.java)
-            intent.putExtra("TITLE", "Halaman 3")
-            intent.putExtra("DESC", "Selamat datang di Profil Anda! Halaman ini didesain secara khusus menampilkan perpaduan tata letak modern dan kartu transparan bergaya estetis.")
+            val intent = Intent(requireContext(), halaman3Activity::class.java).apply {
+                putExtra("TITLE", "Halaman 3")
+                putExtra("DESC", "Profil Estetik Bina Desa.")
+            }
             startActivity(intent)
         }
 
-        // 4. Tombol Web Bina Desa
         binding.btnWeb.setOnClickListener {
-            val intent = Intent(requireContext(), webActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(requireContext(), webActivity::class.java))
         }
 
-        // 5. Tombol Logout
         binding.btnLogout.setOnClickListener {
             tampilkanDialogLogout()
         }
     }
 
     private fun tampilkanDialogLogout() {
-        val builder = AlertDialog.Builder(requireContext())
-        builder.setTitle("Konfirmasi Logout")
-        builder.setMessage("Apakah kamu yakin ingin keluar dari aplikasi?")
-
-        builder.setPositiveButton("Ya") { _, _ ->
-            // Hapus session
-            val sharedPref = requireActivity().getSharedPreferences("user_pref", Context.MODE_PRIVATE)
-            sharedPref.edit {
-                clear()
+        AlertDialog.Builder(requireContext())
+            .setTitle("Konfirmasi Logout")
+            .setMessage("Apakah kamu yakin ingin keluar?")
+            .setPositiveButton("Ya") { _, _ ->
+                val sharedPref = requireActivity().getSharedPreferences("user_pref", Context.MODE_PRIVATE)
+                sharedPref.edit { clear() }
+                val intent = Intent(requireContext(), AuthActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+                requireActivity().finish()
             }
-
-            val intent = Intent(requireContext(), AuthActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
-            requireActivity().finish()
-        }
-
-        builder.setNegativeButton("Tidak") { dialog, _ ->
-            Snackbar.make(binding.root, "Logout dibatalkan", Snackbar.LENGTH_SHORT).show()
-            dialog.dismiss()
-        }
-
-        builder.create().show()
+            .setNegativeButton("Tidak") { dialog, _ ->
+                Snackbar.make(binding.root, "Logout dibatalkan", Snackbar.LENGTH_SHORT).show()
+                dialog.dismiss()
+            }
+            .show()
     }
 
     override fun onDestroyView() {

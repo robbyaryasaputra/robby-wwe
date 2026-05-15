@@ -2,17 +2,18 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FAF9F9">
+    android:background="@drawable/bg_gradient_soft">
 
-    <!-- Background Decoration (Optional Gradient/Circle) -->
+    <!-- Background Decoration -->
     <View
         android:id="@+id/bg_decoration"
         android:layout_width="600dp"
         android:layout_height="600dp"
         android:background="@drawable/circle_soft_pink"
-        android:alpha="0.1"
+        android:alpha="0.05"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,7 +55,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="24dp"
                 android:fontFamily="sans-serif-black"
-                android:text="Selamat Datang"
+                android:text="PORTAL PUBLIK"
                 android:textColor="#1A1C1E"
                 android:textSize="28sp" />
 
@@ -74,9 +75,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:hint="Username"
-                app:startIconDrawable="@drawable/ic_person">
+                app:startIconDrawable="@drawable/ic_person"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etUsername"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName" />
@@ -88,9 +91,11 @@
                 android:layout_marginTop="16dp"
                 android:hint="Password"
                 app:endIconMode="password_toggle"
-                app:startIconDrawable="@drawable/ic_lock">
+                app:startIconDrawable="@drawable/ic_lock"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword" />
@@ -142,68 +147,66 @@
                 android:textColor="#999999"
                 android:textSize="12sp" />
 
-            <!-- Social Login -->
-            <LinearLayout
+            <!-- GridLayout for Social Login -->
+            <GridLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:orientation="horizontal">
+                android:columnCount="2"
+                android:alignmentMode="alignMargins">
 
                 <com.google.android.material.button.MaterialButton
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_weight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_marginEnd="4dp"
                     android:text="Google"
                     android:textAllCaps="false"
                     app:cornerRadius="12dp"
                     app:icon="@drawable/ic_google"
+                    app:iconTint="@null"
                     app:strokeColor="#DDDDDD" />
 
                 <com.google.android.material.button.MaterialButton
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_weight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_marginStart="4dp"
                     android:text="Facebook"
                     android:textAllCaps="false"
                     app:cornerRadius="12dp"
                     app:icon="@drawable/ic_facebook"
+                    app:iconTint="@null"
                     app:strokeColor="#DDDDDD" />
-            </LinearLayout>
+            </GridLayout>
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <!-- Footer -->
-    <LinearLayout
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-    </LinearLayout>
+        android:layout_marginTop="24dp"
+        android:text="Belum punya akun? "
+        android:textColor="#666666"
+        app:layout_constraintEnd_toStartOf="@+id/tvRegister"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginCard" />
 
     <TextView
+        android:id="@+id/tvRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Daftar sekarang"
-        android:textColor="#E91E63"
+        android:textColor="#000000"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="221dp"
-        tools:layout_editor_absoluteY="696dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Belum punya akun? "
-        android:textColor="#666666"
-        tools:layout_editor_absoluteX="89dp"
-        tools:layout_editor_absoluteY="696dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="@+id/textView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -28,7 +28,7 @@ class webActivity : AppCompatActivity() {
             insets
         }
 
-        // --- SETUP TOOLBAR & TOMBOL BACK ---
+        // -- SETUP TOOLBAR & TOMBOL BACK ---
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         

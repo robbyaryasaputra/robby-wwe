@@ -8,15 +8,16 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.rby_wwe.databinding.ActivityLoginBinding
+import com.example.rby_wwe.databinding.ActivityAuthBinding
+import com.example.rby_wwe.Home.pertemuan_3.RegisterActivity
 
 class AuthActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityLoginBinding
+    private lateinit var binding: ActivityAuthBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityLoginBinding.inflate(layoutInflater)
+        binding = ActivityAuthBinding.inflate(layoutInflater)
         enableEdgeToEdge()
         setContentView(binding.root)
 
@@ -28,10 +29,10 @@ class AuthActivity : AppCompatActivity() {
 
         val sharedPref = getSharedPreferences("user_pref", Context.MODE_PRIVATE)
 
+        // Cek status login
         val isLogin = sharedPref.getBoolean("isLogin", false)
         if (isLogin) {
-            val intent = Intent(this, BaseActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, BaseActivity::class.java))
             finish()
         }
 
@@ -40,10 +41,11 @@ class AuthActivity : AppCompatActivity() {
             val password = binding.etPassword.text.toString()
 
             if (username.isNotEmpty() && password.isNotEmpty()) {
-                val editor = sharedPref.edit()
-                editor.putBoolean("isLogin", true)
-                editor.putString("username", username)
-                editor.apply()
+                sharedPref.edit().apply {
+                    putBoolean("isLogin", true)
+                    putString("username", username)
+                    apply()
+                }
 
                 val intent = Intent(this, BaseActivity::class.java)
                 intent.putExtra("USER_NAME", username)
@@ -55,7 +57,8 @@ class AuthActivity : AppCompatActivity() {
         }
 
         binding.tvRegister.setOnClickListener {
-            Toast.makeText(this, "Fitur Daftar belum tersedia", Toast.LENGTH_SHORT).show()
+            // Berpindah ke halaman Register
+            startActivity(Intent(this, RegisterActivity::class.java))
         }
     }
 }

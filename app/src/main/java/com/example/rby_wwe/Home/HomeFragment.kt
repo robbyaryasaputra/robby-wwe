@@ -38,11 +38,39 @@ class HomeFragment : Fragment() {
         val userName = requireActivity().intent.getStringExtra("USER_NAME") ?: sharedPref.getString("username", "Robby")
         binding.tvWelcome.text = "Halo, $userName"
 
-        // Logika ChipGroup
+        // Logika ChipGroup untuk Filter Menu
         binding.chipGroup.setOnCheckedStateChangeListener { group, checkedIds ->
             if (checkedIds.isNotEmpty()) {
                 val chip = group.findViewById<Chip>(checkedIds[0])
-                Snackbar.make(binding.root, "Kategori: ${chip.text}", Snackbar.LENGTH_SHORT).show()
+                val filter = chip.text.toString()
+                
+                when (filter) {
+                    "Semua" -> {
+                        binding.btnHitung.visibility = View.VISIBLE
+                        binding.btnHalaman2.visibility = View.VISIBLE
+                        binding.btnHalaman3.visibility = View.VISIBLE
+                        binding.btnWeb.visibility = View.VISIBLE
+                    }
+                    "Layanan" -> {
+                        binding.btnHitung.visibility = View.VISIBLE
+                        binding.btnWeb.visibility = View.VISIBLE
+                        binding.btnHalaman2.visibility = View.GONE
+                        binding.btnHalaman3.visibility = View.GONE
+                    }
+                    "Berita" -> {
+                        binding.btnHalaman2.visibility = View.VISIBLE
+                        binding.btnHitung.visibility = View.GONE
+                        binding.btnHalaman3.visibility = View.GONE
+                        binding.btnWeb.visibility = View.GONE
+                    }
+                    "Kegiatan" -> {
+                        binding.btnHalaman3.visibility = View.VISIBLE
+                        binding.btnHitung.visibility = View.GONE
+                        binding.btnHalaman2.visibility = View.GONE
+                        binding.btnWeb.visibility = View.GONE
+                    }
+                }
+                Snackbar.make(binding.root, "Filter: $filter", Snackbar.LENGTH_SHORT).show()
             }
         }
 

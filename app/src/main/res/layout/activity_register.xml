@@ -4,7 +4,6 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_card_gray_border"
     android:fillViewport="true">
 
     <LinearLayout
@@ -39,7 +38,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="48dp"
             android:hint="Nama Lengkap"
-            app:startIconDrawable="@drawable/ic_person"
             app:errorEnabled="true">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etNama"
@@ -53,9 +51,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:hint="Tanggal Lahir"
-            app:startIconDrawable="@drawable/ic_category"
             app:errorEnabled="true">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etTglLahir"
@@ -74,31 +70,13 @@
             android:textColor="#1A1C1E"
             android:textStyle="bold"
             android:textSize="16sp" />
-
-        <!-- ChipGroup for Gender Selection -->
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/cgGender"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            app:singleSelection="true"
-            app:selectionRequired="true">
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chipLaki"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Laki-laki"
-                app:chipBackgroundColor="@color/bg_chip_state" />
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chipPerempuan"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Perempuan"
-                app:chipBackgroundColor="@color/bg_chip_state" />
-        </com.google.android.material.chip.ChipGroup>
-
         <TextView
             android:id="@+id/tvErrorGender"
             android:layout_width="wrap_content"
@@ -112,9 +90,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
             android:hint="Agama"
-            app:startIconDrawable="@drawable/ic_group"
             app:errorEnabled="true">
             <AutoCompleteTextView
                 android:id="@+id/actAgama"
@@ -128,9 +104,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:hint="Username"
-            app:startIconDrawable="@drawable/ic_person"
             app:errorEnabled="true">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etUsername"
@@ -143,9 +117,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:hint="Password"
-            app:startIconDrawable="@drawable/ic_lock"
             app:errorEnabled="true"
             app:passwordToggleEnabled="true">
             <com.google.android.material.textfield.TextInputEditText
@@ -160,9 +132,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:hint="Konfirmasi Password"
-            app:startIconDrawable="@drawable/ic_lock"
             app:errorEnabled="true"
             app:passwordToggleEnabled="true">
             <com.google.android.material.textfield.TextInputEditText
@@ -176,10 +146,7 @@
             android:id="@+id/btnRegister"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginTop="48dp"
             android:text="Daftar Sekarang"
-            android:textAllCaps="false"
-            android:textSize="16sp"
             app:cornerRadius="16dp"
             app:backgroundTint="#E91E63" />
 

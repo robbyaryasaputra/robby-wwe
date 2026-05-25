@@ -3,7 +3,6 @@ package com.example.rby_wwe.Home.pertemuan_3
 import android.app.DatePickerDialog
 import android.content.Context
 import android.os.Bundle
-import android.view.View
 import android.widget.ArrayAdapter
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -75,8 +74,6 @@ class RegisterActivity : AppCompatActivity() {
         binding.etUsername.doOnTextChanged { _, _, _, _ -> binding.tilUsername.error = null }
         binding.etPassword.doOnTextChanged { _, _, _, _ -> binding.tilPassword.error = null }
         binding.etConfirmPassword.doOnTextChanged { _, _, _, _ -> binding.tilConfirmPassword.error = null }
-        binding.cgGender.setOnCheckedStateChangeListener { _, _ ->
-            binding.tvErrorGender.visibility = View.GONE
         }
     }
 
@@ -93,9 +90,7 @@ class RegisterActivity : AppCompatActivity() {
             isValid = false
         }
 
-        if (binding.cgGender.checkedChipId == View.NO_ID) {
             binding.tvErrorGender.text = "Pilih jenis kelamin"
-            binding.tvErrorGender.visibility = View.VISIBLE
             isValid = false
         }
 
@@ -131,7 +126,6 @@ class RegisterActivity : AppCompatActivity() {
         val sharedPref = getSharedPreferences("user_pref", Context.MODE_PRIVATE)
         val editor = sharedPref.edit()
 
-        val gender = if (binding.chipLaki.isChecked) "Laki-laki" else "Perempuan"
 
         editor.putString("reg_nama", binding.etNama.text.toString())
         editor.putString("reg_tgl_lahir", binding.etTglLahir.text.toString())

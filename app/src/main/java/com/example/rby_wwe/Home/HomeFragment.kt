@@ -14,6 +14,7 @@ import com.example.rby_wwe.Home.pertemuan_2.HitungActivity
 import com.example.rby_wwe.Home.pertemuan_4.halaman2Activity
 import com.example.rby_wwe.Home.pertemuan_4.halaman3Activity
 import com.example.rby_wwe.Home.pertemuan_6.webActivity
+import com.example.rby_wwe.Home.pertemuan_10.TenthActivity
 import com.example.rby_wwe.databinding.FragmentHomeBinding
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.chip.Chip
@@ -50,24 +51,28 @@ class HomeFragment : Fragment() {
                         binding.btnHalaman2.visibility = View.VISIBLE
                         binding.btnHalaman3.visibility = View.VISIBLE
                         binding.btnWeb.visibility = View.VISIBLE
+                        binding.btnPertemuan10.visibility = View.VISIBLE
                     }
                     "Layanan" -> {
                         binding.btnHitung.visibility = View.VISIBLE
                         binding.btnWeb.visibility = View.VISIBLE
                         binding.btnHalaman2.visibility = View.GONE
                         binding.btnHalaman3.visibility = View.GONE
+                        binding.btnPertemuan10.visibility = View.GONE
                     }
                     "Berita" -> {
                         binding.btnHalaman2.visibility = View.VISIBLE
                         binding.btnHitung.visibility = View.GONE
                         binding.btnHalaman3.visibility = View.GONE
                         binding.btnWeb.visibility = View.GONE
+                        binding.btnPertemuan10.visibility = View.GONE
                     }
                     "Kegiatan" -> {
                         binding.btnHalaman3.visibility = View.VISIBLE
                         binding.btnHitung.visibility = View.GONE
                         binding.btnHalaman2.visibility = View.GONE
                         binding.btnWeb.visibility = View.GONE
+                        binding.btnPertemuan10.visibility = View.GONE
                     }
                 }
                 Snackbar.make(binding.root, "Filter: $filter", Snackbar.LENGTH_SHORT).show()
@@ -96,6 +101,10 @@ class HomeFragment : Fragment() {
 
         binding.btnWeb.setOnClickListener {
             startActivity(Intent(requireContext(), webActivity::class.java))
+        }
+
+        binding.btnPertemuan10.setOnClickListener {
+            startActivity(Intent(requireContext(), TenthActivity::class.java))
         }
 
         binding.btnLogout.setOnClickListener {

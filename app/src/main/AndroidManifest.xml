@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Rbywwe"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Home.pertemuan_10.TenthActivity"
+            android:exported="false" />
+        <activity
             android:name=".Home.pertemuan_3.RegisterActivity"
             android:exported="false" />
         <activity

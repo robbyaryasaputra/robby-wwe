@@ -4,11 +4,7 @@ plugins {
 
 android {
     namespace = "com.example.rby_wwe"
-    compileSdk {
-        version = release(36) {
-            minorApiLevel = 1
-        }
-    }
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.example.rby_wwe"
@@ -46,6 +42,11 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    
+    // RecyclerView and Glide
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

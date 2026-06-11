@@ -25,18 +25,26 @@ class SplashScreenActivity : AppCompatActivity() {
 
         val sharedPref = getSharedPreferences("user_pref", Context.MODE_PRIVATE)
         val isLogin = sharedPref.getBoolean("isLogin", false)
+        val finishedOnBoarding = sharedPref.getBoolean("finishedOnBoarding", false)
         val userName = sharedPref.getString("username", "")
 
         lifecycleScope.launch {
             delay(2000) // Delay splash screen 2 detik
 
-            if (isLogin) {
-                val intent = Intent(this@SplashScreenActivity, BaseActivity::class.java)
-                intent.putExtra("USER_NAME", userName)
-                startActivity(intent)
-            } else {
-                val intent = Intent(this@SplashScreenActivity, AuthActivity::class.java)
-                startActivity(intent)
+            when {
+                isLogin -> {
+                    val intent = Intent(this@SplashScreenActivity, BaseActivity::class.java)
+                    intent.putExtra("USER_NAME", userName)
+                    startActivity(intent)
+                }
+                !finishedOnBoarding -> {
+                    val intent = Intent(this@SplashScreenActivity, OnBoardingActivity::class.java)
+                    startActivity(intent)
+                }
+                else -> {
+                    val intent = Intent(this@SplashScreenActivity, AuthActivity::class.java)
+                    startActivity(intent)
+                }
             }
             finish()
         }

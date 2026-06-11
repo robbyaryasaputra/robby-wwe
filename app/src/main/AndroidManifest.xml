@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Rbywwe"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".OnBoardingActivity"
+            android:exported="false" />
+        <activity
             android:name=".Home.pertemuan_10.TenthActivity"
             android:exported="false" />
         <activity
@@ -27,9 +30,7 @@
         <activity
             android:name=".Home.pertemuan_6.webActivity"
             android:exported="false" />
-        <activity
-            android:name=".Home.pertemuan_3.LoginActivity"
-            android:exported="false" />
+
         <activity
             android:name=".AuthActivity"
             android:exported="false" />
@@ -52,14 +53,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Home.pertemuan_3.WelcomeActivity"
-            android:exported="false" />
-        <activity
             android:name=".Home.pertemuan_2.HitungActivity"
             android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
+
     </application>
 
 </manifest>

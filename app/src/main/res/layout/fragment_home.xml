@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home_fragment_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -83,6 +84,7 @@
                     app:singleSelection="true">
                     <com.google.android.material.chip.Chip
                         style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:id="@+id/chipSemua"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Semua"
@@ -90,18 +92,21 @@
                         app:chipBackgroundColor="@color/bg_chip_state" />
                     <com.google.android.material.chip.Chip
                         style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:id="@+id/chipLayanan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Layanan"
                         app:chipBackgroundColor="@color/bg_chip_state" />
                     <com.google.android.material.chip.Chip
                         style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:id="@+id/chipBerita"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Berita"
                         app:chipBackgroundColor="@color/bg_chip_state" />
                     <com.google.android.material.chip.Chip
                         style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:id="@+id/chipKegiatan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Kegiatan"
@@ -109,179 +114,219 @@
                 </com.google.android.material.chip.ChipGroup>
             </HorizontalScrollView>
 
-            <!-- Stats Grid -->
-            <GridLayout
+            <LinearLayout
+                android:id="@+id/layoutMenuUtama"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:alignmentMode="alignMargins"
-                android:columnCount="2">
+                android:orientation="vertical">
 
-                <!-- Fitur Hitung -->
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/btnHitung"
-                    android:layout_width="0dp"
+                <!-- Stats Grid -->
+                <GridLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="6dp"
+                    android:layout_marginTop="16dp"
+                    android:alignmentMode="alignMargins"
+                    android:columnCount="2">
+
+                    <!-- Fitur Hitung -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/btnHitung"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="6dp"
+                        app:cardCornerRadius="16dp"
+                        app:strokeWidth="0dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="16dp"
+                            android:background="@drawable/bg_card_pink_border">
+                            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_group" app:tint="#D81B60" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="Hitung" android:textSize="12sp" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="sans-serif-black" android:text="Kalkulator" android:textSize="18sp" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Buka →" android:textColor="#D81B60" android:textStyle="bold" android:textSize="12sp" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Tombol Logout -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/btnLogout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="6dp"
+                        app:cardBackgroundColor="#333333"
+                        app:cardCornerRadius="16dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="16dp">
+                            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_shield" app:tint="@android:color/white" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="Akun" android:textColor="#CCCCCC" android:textSize="12sp" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="sans-serif-black" android:text="Logout" android:textColor="@android:color/white" android:textSize="18sp" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Keluar →" android:textColor="@android:color/white" android:textStyle="bold" android:textSize="12sp" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Halaman 2 -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/btnHalaman2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="6dp"
+                        app:cardCornerRadius="16dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="16dp"
+                            android:background="@drawable/bg_card_red_border">
+                            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_category" app:tint="#D32F2F" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="Berita" android:textSize="12sp" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="sans-serif-black" android:text="Halaman 2" android:textSize="18sp" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Buka →" android:textColor="#D32F2F" android:textStyle="bold" android:textSize="12sp" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Halaman 3 -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/btnHalaman3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="6dp"
+                        app:cardCornerRadius="16dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="16dp"
+                            android:background="@drawable/bg_card_gray_border">
+                        <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_person_search" app:tint="#555555" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="User" android:textSize="12sp" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="sans-serif-black" android:text="Halaman 3" android:textSize="18sp" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Buka →" android:textColor="#555555" android:textStyle="bold" android:textSize="12sp" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Pertemuan 10 -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/btnPertemuan10"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="6dp"
+                        app:cardCornerRadius="16dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="16dp"
+                            android:background="@drawable/bg_card_white_gradient">
+                            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_category" app:tint="#673AB7" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="Tugas" android:textSize="12sp" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="sans-serif-black" android:text="Pertemuan 10" android:textSize="18sp" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Buka →" android:textColor="#673AB7" android:textStyle="bold" android:textSize="12sp" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                </GridLayout>
+
+                <!-- Web Bina Desa with Custom Gradient Background -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/btnWeb"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
                     app:cardCornerRadius="16dp"
                     app:strokeWidth="0dp">
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="16dp"
-                        android:background="@drawable/bg_card_pink_border">
-                        <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_group" app:tint="#D81B60" />
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="Hitung" android:textSize="12sp" />
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="sans-serif-black" android:text="Kalkulator" android:textSize="18sp" />
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Buka →" android:textColor="#D81B60" android:textStyle="bold" android:textSize="12sp" />
+                        android:orientation="horizontal"
+                        android:padding="20dp"
+                        android:gravity="center_vertical"
+                        android:background="@drawable/bg_gradient_soft">
+                        <ImageView android:layout_width="48dp" android:layout_height="48dp" android:src="@drawable/ic_image" app:tint="#388E3C" />
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="16dp"
+                            android:orientation="vertical">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Layanan" android:textSize="12sp" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="sans-serif-black" android:text="Web Bina Desa" android:textSize="20sp" />
+                        </LinearLayout>
+                        <com.google.android.material.button.MaterialButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Kunjungi"
+                            android:textAllCaps="false"
+                            app:cornerRadius="8dp"
+                            app:backgroundTint="#388E3C"/>
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- Tombol Logout -->
+                <!-- Galeri Full Width -->
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/btnLogout"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="6dp"
-                    app:cardBackgroundColor="#333333"
-                    app:cardCornerRadius="16dp">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-                        <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_shield" app:tint="@android:color/white" />
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="Akun" android:textColor="#CCCCCC" android:textSize="12sp" />
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="sans-serif-black" android:text="Logout" android:textColor="@android:color/white" android:textSize="18sp" />
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Keluar →" android:textColor="@android:color/white" android:textStyle="bold" android:textSize="12sp" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <!-- Halaman 2 -->
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/btnHalaman2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="6dp"
-                    app:cardCornerRadius="16dp">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="16dp"
-                        android:background="@drawable/bg_card_red_border">
-                        <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_category" app:tint="#D32F2F" />
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="Berita" android:textSize="12sp" />
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="sans-serif-black" android:text="Halaman 2" android:textSize="18sp" />
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Buka →" android:textColor="#D32F2F" android:textStyle="bold" android:textSize="12sp" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <!-- Halaman 3 -->
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/btnHalaman3"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="6dp"
-                    app:cardCornerRadius="16dp">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="16dp"
-                        android:background="@drawable/bg_card_gray_border">
-                        <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_person_search" app:tint="#555555" />
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="User" android:textSize="12sp" />
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="sans-serif-black" android:text="Halaman 3" android:textSize="18sp" />
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Buka →" android:textColor="#555555" android:textStyle="bold" android:textSize="12sp" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <!-- Pertemuan 10 -->
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/btnPertemuan10"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="6dp"
-                    app:cardCornerRadius="16dp">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="16dp"
-                        android:background="@drawable/bg_card_white_gradient">
-                        <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_category" app:tint="#673AB7" />
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="Tugas" android:textSize="12sp" />
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="sans-serif-black" android:text="Pertemuan 10" android:textSize="18sp" />
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Buka →" android:textColor="#673AB7" android:textStyle="bold" android:textSize="12sp" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-            </GridLayout>
-
-            <!-- Web Bina Desa with Custom Gradient Background -->
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/btnWeb"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                app:cardCornerRadius="16dp"
-                app:strokeWidth="0dp">
-                <LinearLayout
+                    android:id="@+id/btnGaleri"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="20dp"
-                    android:gravity="center_vertical"
-                    android:background="@drawable/bg_gradient_soft">
-                    <ImageView android:layout_width="48dp" android:layout_height="48dp" android:src="@drawable/ic_image" app:tint="#388E3C" />
-                    <LinearLayout
-                        android:layout_width="0dp"
+                    android:layout_marginTop="12dp"
+                    app:cardCornerRadius="16dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginStart="16dp"
-                        android:orientation="vertical">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Layanan" android:textSize="12sp" />
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="sans-serif-black" android:text="Web Bina Desa" android:textSize="20sp" />
-                    </LinearLayout>
-                    <com.google.android.material.button.MaterialButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Kunjungi"
-                        android:textAllCaps="false"
-                        app:cornerRadius="8dp"
-                        app:backgroundTint="#388E3C"/>
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+                        android:padding="20dp"
+                        android:background="@drawable/bg_card_green_border">
+                        <ImageView android:id="@+id/icon_galeri" android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_image" app:tint="#388E3C" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toEndOf="@id/icon_galeri" android:layout_marginStart="8dp" android:text="Galeri" android:textSize="12sp" />
+                        <TextView android:id="@+id/txt_galeri" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/icon_galeri" android:layout_marginTop="8dp" android:fontFamily="sans-serif-black" android:text="1.890 Foto &amp; Video" android:textSize="24sp" />
+                        <com.google.android.material.button.MaterialButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" android:layout_centerVertical="true" android:text="Kelola" android:textAllCaps="false" app:backgroundTint="#388E3C" app:cornerRadius="8dp" />
+                    </RelativeLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
 
-            <!-- Galeri Full Width -->
-            <com.google.android.material.card.MaterialCardView
+            <LinearLayout
+                android:id="@+id/layoutBerita"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                app:cardCornerRadius="16dp">
-                <RelativeLayout
+                android:orientation="vertical"
+                android:layout_marginTop="24dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
+                    android:text="Berita Terbaru"
+                    android:textColor="#1A1C1E"
+                    android:textSize="22sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvNews"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="20dp"
-                    android:background="@drawable/bg_card_green_border">
-                    <ImageView android:id="@+id/icon_galeri" android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_image" app:tint="#388E3C" />
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toEndOf="@id/icon_galeri" android:layout_marginStart="8dp" android:text="Galeri" android:textSize="12sp" />
-                    <TextView android:id="@+id/txt_galeri" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/icon_galeri" android:layout_marginTop="8dp" android:fontFamily="sans-serif-black" android:text="1.890 Foto &amp; Video" android:textSize="24sp" />
-                    <com.google.android.material.button.MaterialButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" android:layout_centerVertical="true" android:text="Kelola" android:textAllCaps="false" app:backgroundTint="#388E3C" app:cornerRadius="8dp" />
-                </RelativeLayout>
-            </com.google.android.material.card.MaterialCardView>
+                    android:layout_marginTop="12dp"
+                    android:nestedScrollingEnabled="false"
+                    tools:listitem="@layout/item_news" />
+
+                <ProgressBar
+                    android:id="@+id/pbNews"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:visibility="gone" />
+            </LinearLayout>
 
             <View android:layout_width="match_parent" android:layout_height="100dp" />
         </LinearLayout>

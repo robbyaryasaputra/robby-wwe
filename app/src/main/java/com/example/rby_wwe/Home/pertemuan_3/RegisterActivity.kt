@@ -5,12 +5,15 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.widget.doOnTextChanged
+import com.example.rby_wwe.Home.pertemuan_4.DashboardActivity
 import com.example.rby_wwe.databinding.ActivityRegisterBinding
+import com.example.rby_wwe.utils.ReminderHelper
 import java.util.Calendar
 
 class RegisterActivity : AppCompatActivity() {
@@ -36,6 +39,27 @@ class RegisterActivity : AppCompatActivity() {
         binding.btnRegister.setOnClickListener {
             if (validateForm()) {
                 saveToSharedPreference()
+                
+                // --- TEST DRIVE REMINDER ---
+                val namaUser = binding.etNama.text.toString()
+                
+                // Set waktu 1 menit dari sekarang
+                val calendar = Calendar.getInstance().apply {
+                    add(Calendar.MINUTE, 1)
+                }
+
+                ReminderHelper.setReminder(
+                    context = this,
+                    hour = calendar.get(Calendar.HOUR_OF_DAY),
+                    minute = calendar.get(Calendar.MINUTE),
+                    title = "Pendaftaran Berhasil",
+                    message = "Halo $namaUser, selamat datang di aplikasi Bina Desa!",
+                    targetActivity = DashboardActivity::class.java
+                )
+
+                Toast.makeText(this, "Registrasi Berhasil! Tunggu 1 menit untuk notifikasi pengingat.", Toast.LENGTH_LONG).show()
+                // ---------------------------
+
                 finish()
             }
         }

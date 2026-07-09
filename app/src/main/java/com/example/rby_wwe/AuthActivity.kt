@@ -40,7 +40,12 @@ class AuthActivity : AppCompatActivity() {
             val username = binding.etUsername.text.toString()
             val password = binding.etPassword.text.toString()
 
-            if (username.isNotEmpty() && password.isNotEmpty()) {
+            val registeredUsername = sharedPref.getString("reg_username", "")
+            val registeredPassword = sharedPref.getString("reg_password", "")
+
+            if (username.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "Tolong isi Username dan Password", Toast.LENGTH_SHORT).show()
+            } else if (username == registeredUsername && password == registeredPassword) {
                 sharedPref.edit().apply {
                     putBoolean("isLogin", true)
                     putString("username", username)
@@ -52,7 +57,7 @@ class AuthActivity : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             } else {
-                Toast.makeText(this, "Tolong isi Username dan Password", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Username atau Password salah", Toast.LENGTH_SHORT).show()
             }
         }
 

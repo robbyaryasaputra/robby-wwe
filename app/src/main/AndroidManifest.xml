@@ -52,6 +52,12 @@
             android:name=".Home.pertemuan_4.halaman2Activity"
             android:exported="false" />
         <activity
+            android:name=".Note.NoteFormActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Note.NotesActivity"
+            android:exported="false" />
+        <activity
             android:name=".SplashScreenActivity"
             android:exported="true">
             <intent-filter>

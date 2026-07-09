@@ -21,8 +21,8 @@ import com.example.rby_wwe.Home.pertemuan_4.halaman2Activity
 import com.example.rby_wwe.Home.pertemuan_4.halaman3Activity
 import com.example.rby_wwe.Home.pertemuan_6.webActivity
 import com.example.rby_wwe.Home.pertemuan_10.TenthActivity
+import com.example.rby_wwe.Note.NotesActivity
 import com.example.rby_wwe.databinding.FragmentHomeBinding
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.chip.Chip
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -82,8 +82,13 @@ class HomeFragment : Fragment() {
             }
         }
 
+        // Setup click listeners for menu items
         binding.btnHitung.setOnClickListener { startActivity(Intent(requireContext(), HitungActivity::class.java)) }
+        binding.btnHalaman2.setOnClickListener { startActivity(Intent(requireContext(), halaman2Activity::class.java)) }
+        binding.btnHalaman3.setOnClickListener { startActivity(Intent(requireContext(), halaman3Activity::class.java)) }
+        binding.btnPertemuan10.setOnClickListener { startActivity(Intent(requireContext(), TenthActivity::class.java)) }
         binding.btnWeb.setOnClickListener { startActivity(Intent(requireContext(), webActivity::class.java)) }
+        binding.btnNotes.setOnClickListener { startActivity(Intent(requireContext(), NotesActivity::class.java)) }
         binding.btnLogout.setOnClickListener { tampilkanDialogLogout() }
     }
 
@@ -102,7 +107,6 @@ class HomeFragment : Fragment() {
             .addInterceptor(logging)
             .build()
 
-        // Menggunakan RSS2JSON API untuk mendapatkan data dari feed resmi Antara
         val retrofit = Retrofit.Builder()
             .baseUrl("https://api.rss2json.com/v1/")
             .addConverterFactory(GsonConverterFactory.create())

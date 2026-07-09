@@ -21,6 +21,7 @@ import com.example.rby_wwe.Home.pertemuan_4.halaman2Activity
 import com.example.rby_wwe.Home.pertemuan_4.halaman3Activity
 import com.example.rby_wwe.Home.pertemuan_6.webActivity
 import com.example.rby_wwe.Home.pertemuan_10.TenthActivity
+import com.example.rby_wwe.Home.pertemuan_13.ThirteenthActivity
 import com.example.rby_wwe.Note.NotesActivity
 import com.example.rby_wwe.databinding.FragmentHomeBinding
 import com.google.android.material.chip.Chip
@@ -87,6 +88,13 @@ class HomeFragment : Fragment() {
         binding.btnHalaman2.setOnClickListener { startActivity(Intent(requireContext(), halaman2Activity::class.java)) }
         binding.btnHalaman3.setOnClickListener { startActivity(Intent(requireContext(), halaman3Activity::class.java)) }
         binding.btnPertemuan10.setOnClickListener { startActivity(Intent(requireContext(), TenthActivity::class.java)) }
+
+        binding.btnPertemuan13.setOnClickListener {
+            val intent = Intent(requireContext(), ThirteenthActivity::class.java)
+            intent.putExtra("TARGET_TAB", 2)
+            startActivity(intent)
+        }
+
         binding.btnWeb.setOnClickListener { startActivity(Intent(requireContext(), webActivity::class.java)) }
         binding.btnNotes.setOnClickListener { startActivity(Intent(requireContext(), NotesActivity::class.java)) }
         binding.btnLogout.setOnClickListener { tampilkanDialogLogout() }

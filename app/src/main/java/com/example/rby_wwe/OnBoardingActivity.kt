@@ -63,19 +63,19 @@ class OnBoardingActivity : AppCompatActivity() {
     private fun setupOnBoardingItems() {
         val onBoardingItems = listOf(
             OnBoardingItem(
-                R.drawable.ic_launcher_foreground, // Ganti dengan image yang sesuai
-                "Selamat Datang di RBY WWE",
-                "Temukan informasi terbaru seputar dunia gulat profesional di genggaman Anda."
+                R.drawable.logoportalpublik,
+                "Layanan Publik Digital",
+                "Akses semua kebutuhan administrasi kota dalam satu genggaman dengan cepat dan mudah."
             ),
             OnBoardingItem(
-                R.drawable.ic_launcher_foreground,
-                "Update Real-Time",
-                "Dapatkan berita dan hasil pertandingan paling update setiap harinya."
+                R.drawable.logoportalpublik,
+                "Pantau Berita Kota",
+                "Dapatkan informasi terkini dan pengumuman resmi langsung dari pemerintah kota Anda."
             ),
             OnBoardingItem(
-                R.drawable.ic_launcher_foreground,
-                "Komunitas Fans",
-                "Bergabung dengan ribuan fans lainnya dan bagikan opini Anda."
+                R.drawable.logoportalpublik,
+                "Keamanan Terjamin",
+                "Data pribadi Anda terlindungi dengan sistem enkripsi tingkat tinggi untuk kenyamanan bertransaksi."
             )
         )
         onBoardingAdapter = OnBoardingAdapter(onBoardingItems)

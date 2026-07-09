@@ -8,21 +8,21 @@
 
     <ImageView
         android:id="@+id/ivOnBoarding"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_width="280dp"
+        android:layout_height="280dp"
         android:scaleType="centerInside"
-        android:src="@drawable/ic_launcher_foreground" />
+        android:src="@drawable/logoportalpublik" />
 
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="32dp"
         android:fontFamily="sans-serif-black"
         android:gravity="center"
-        android:text="Judul OnBoarding"
+        android:text="Judul Fitur"
         android:textColor="@color/text_white"
-        android:textSize="24sp" />
+        android:textSize="26sp" />
 
     <TextView
         android:id="@+id/tvDescription"
@@ -30,7 +30,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:gravity="center"
-        android:text="Deskripsi tentang fitur atau aplikasi ini akan muncul di sini."
+        android:lineSpacingExtra="4dp"
+        android:text="Penjelasan singkat mengenai manfaat fitur ini bagi warga kota."
         android:textColor="@color/text_muted"
         android:textSize="16sp" />
 
